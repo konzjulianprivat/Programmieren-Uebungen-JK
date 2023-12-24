@@ -5,9 +5,16 @@ import java.util.HashMap;
 
 public class Testing {
     public static void main(String[] args) {
-        testSortingTimeMeasure(1000);
+        testSortingAlgorithmTimeMeasure(1000);
+        testMathOperation(47);
     }
-    public static void testSorting(int j){
+    public static void testMathOperation(int j){
+        System.out.println("Input: " + j);
+        System.out.println("Fibonacci: " + MathOperation.fibonacci(j));
+        System.out.println("PrimeNumbers: " + MathOperation.primeNumbers(j));
+        System.out.println("isPrimeNumber: " + MathOperation.isPrime(j));
+    }
+    public static void testSortingAlgorithm(int j){
         ArrayList<Integer> test = SortingAlgorithm.createRandomArrayList(j);
             System.out.println(test);
             System.out.println(SortingAlgorithm.quickSortArrayList(test));
@@ -15,7 +22,7 @@ public class Testing {
             System.out.println(SortingAlgorithm.insertionSortArrayList(test));
             System.out.println(SortingAlgorithm.bubbleSortArrayList(test));
     }
-    public static void testSortingTimeMeasure(int maximum){
+    public static void testSortingAlgorithmTimeMeasure(int maximum){
         long a=0;
         long b=0;
 
