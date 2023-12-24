@@ -1,2 +1,2 @@
-# Test
-Erster Test
+# Uebungen
+Uebungen für die Klausur
