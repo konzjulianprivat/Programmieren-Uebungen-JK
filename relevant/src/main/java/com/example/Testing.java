@@ -5,14 +5,15 @@ import java.util.HashMap;
 
 public class Testing {
     public static void main(String[] args) {
-        testSortingAlgorithmTimeMeasure(1000);
-        testMathOperation(47);
+        //testSortingAlgorithmTimeMeasure(1000);
+        testMathOperation(7);
     }
     public static void testMathOperation(int j){
         System.out.println("Input: " + j);
         System.out.println("Fibonacci: " + MathOperation.fibonacci(j));
         System.out.println("PrimeNumbers: " + MathOperation.primeNumbers(j));
         System.out.println("isPrimeNumber: " + MathOperation.isPrime(j));
+        System.out.println("Collatz: " + MathOperation.collatz(j));
     }
     public static void testSortingAlgorithm(int j){
         ArrayList<Integer> test = SortingAlgorithm.createRandomArrayList(j);

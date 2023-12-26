@@ -63,4 +63,21 @@ public class MathOperation {
         }
         return output;
     }
+    public static ArrayList<Integer> collatz (int input){
+        ArrayList<Integer> collatzArrayList = new ArrayList<>();
+        collatzArrayList.add(input);
+        return collatzRecursive(collatzArrayList, input);
+    }
+    private static ArrayList<Integer> collatzRecursive (ArrayList<Integer> collArrayList, int input){
+        if(input==1){
+            return collArrayList;
+        }
+        else if(input%2==0){
+            collArrayList.add(input/2);
+            return collatzRecursive(collArrayList, input/2);
+        } else {
+            collArrayList.add(3*input+1);
+            return collatzRecursive(collArrayList, 3*input+1);
+        }
+    }
 }
