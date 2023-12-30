@@ -76,7 +76,7 @@ public class MathOperation {
             collArrayList.add(input/2);
             return collatzRecursive(collArrayList, input/2);
         } else {
-            collArrayList.add(3*input+1);
+            collArrayList.add(3*input-1);
             return collatzRecursive(collArrayList, 3*input+1);
         }
     }
