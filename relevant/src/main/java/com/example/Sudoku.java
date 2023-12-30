@@ -1,7 +1,10 @@
 package main.java.com.example;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class Sudoku {
     public static int[][] generateSudoku(){
@@ -14,9 +17,13 @@ public class Sudoku {
         }
         addRowToCrossing(spielfeld, crossing);
         addColumnToCrossing(spielfeld, crossing);
-        int checkedState = checkForDuplicates(spielfeld);
-        System.out.println(checkedState);
-        return generateSudokuRecursive(crossing+1, spielfeld);
+        int checkedState = checkForDuplicatesRows(spielfeld, crossing);
+        //System.out.println(checkedState);
+        if(checkedState==-1){
+            return generateSudokuRecursive(crossing+1, spielfeld);
+        } else {
+            return generateSudokuRecursive(checkedState, spielfeld);
+        }
     }
     private static int[][]addRowToCrossing(int[][]spielfeld,int crossing){
         int[]rowOld=new int[crossing];
@@ -31,26 +38,39 @@ public class Sudoku {
         }
         return spielfeld;
     }
-    private static int checkForDuplicates(int[][]spielfeld){
-        
-        for (int i = 0; i < 9; i++) {
-            ArrayList<Integer>duplicates=new ArrayList<>();
-            for (int j = 0; j < 9; j++) {
-                for (int j2 = 0; j2 < duplicates.size(); j2++) {
-                    if(spielfeld[i][j]==duplicates.get(j2)&&spielfeld[i][j]!=0){
-                        if(i<=j){
-                            System.out.println(spielfeld[i][j]+" ist doppelt");
-                            return i;
-                        }
-                        System.out.println(spielfeld[i][j]+" ist doppelt");
-                        return j;
+    private static int checkForDuplicatesRows(int[][]spielfeld, int crossing){
+        Set<Integer> duplicates = new HashSet<>();
+        for (int i = 0; i < crossing; i++) {
+            for (int j = 0; j < crossing; j++) {
+                if(duplicates.contains(spielfeld[i][j]) && spielfeld[i][j] != 0){
+                    if(i <= j){
+                        return i;
                     }
+                    return j;
                 }
-                if(spielfeld[i][j]!=0){
+                if(spielfeld[i][j] != 0){
                     duplicates.add(spielfeld[i][j]);
                 }
             }
-            
+            duplicates.clear();
+        }
+        return checkForDuplicatesColumns(spielfeld, crossing);
+    }
+    private static int checkForDuplicatesColumns(int[][]spielfeld, int crossing){
+        Set<Integer> duplicates = new HashSet<>();
+        for (int i = 0; i < crossing; i++) {
+            for (int j = 0; j < crossing; j++) {
+                if (duplicates.contains(spielfeld[j][i]) && spielfeld[j][i] != 0) {
+                    if(i <= j){
+                        return i;
+                    }
+                    return j;
+                }
+                if(spielfeld[j][i] != 0){
+                    duplicates.add(spielfeld[j][i]);
+                }
+            }
+            duplicates.clear();
         }
         return -1;
     }
@@ -86,35 +106,35 @@ public class Sudoku {
         return spielfeld;
     }
     private static int[] generateSubline(int[] input){
-        int[] numbersLeft = new int[9];
-        ArrayList<Integer> numbersRandom = new ArrayList<>();
-        ArrayList<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < 9; i++) {
             numbers.add(i+1);
         }
-        for (int i = 8; i > 0; i--) {
-            int m=random.nextInt(i);
-            numbersRandom.add(numbers.get(m));
-            numbers.remove(m);
+
+        for (int i = 0; i < input.length; i++) {
+            numbers.remove(Integer.valueOf(input[i]));
         }
-        numbersRandom.add(numbers.get(0));
+
+        int[] numbersLeft = new int[9];
+
         for (int i = input.length; i < 9; i++) {
-            boolean isSet=false;
-            while(!isSet){
-                boolean notIn = true;
-                for (int j = 0; j < input.length; j++) {
-                    if(input[j]==numbersRandom.get(0)){
-                        notIn=false;
-                    }
+            boolean isSet = false;
+
+            while (!isSet) {
+                if (numbers.isEmpty()) {
+                    break;
                 }
-                if(notIn){
-                    numbersLeft[i]=numbersRandom.get(0);
-                    isSet=true;
-                }
-                numbersRandom.remove(0);
+
+                int randIndex = random.nextInt(numbers.size());
+                int randNum = numbers.get(randIndex);
+
+                numbersLeft[i] = randNum;
+                numbers.remove(randIndex);
+                isSet = true;
             }
         }
+
         return numbersLeft;
     }
 }
