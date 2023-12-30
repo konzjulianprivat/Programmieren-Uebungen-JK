@@ -6,7 +6,8 @@ import java.util.HashMap;
 public class Testing {
     public static void main(String[] args) {
         //testSortingAlgorithmTimeMeasure(1000);
-        testMathOperation(7);
+        //testMathOperation(5);
+        Sudoku.printSpielfeld(Sudoku.generateSudoku());
     }
     public static void testMathOperation(int j){
         System.out.println("Input: " + j);
