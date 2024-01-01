@@ -3,11 +3,14 @@ package main.java.com.example;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import main.java.com.example.Uebungen.KlammernGueltig;
+
 public class Testing {
     public static void main(String[] args) {
         //testSortingAlgorithmTimeMeasure(1000);
         //testMathOperation(5);
-        Sudoku.printSpielfeld(Sudoku.generateSudoku());
+        //Sudoku.printSpielfeld(Sudoku.generateSudoku());
+        System.out.println(KlammernGueltig.checkForKlammernAdvanced("())"));
     }
     public static void testMathOperation(int j){
         System.out.println("Input: " + j);
