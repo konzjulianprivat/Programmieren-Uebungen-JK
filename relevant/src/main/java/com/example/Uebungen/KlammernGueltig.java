@@ -1,4 +1,4 @@
-package main.java.com.example.Uebungen;
+package com.example.Uebungen;
 
 import java.util.ArrayList;
 

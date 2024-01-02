@@ -1,9 +1,9 @@
-package main.java.com.example;
+package com.example;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import main.java.com.example.Uebungen.KlammernGueltig;
+import com.example.Uebungen.KlammernGueltig;
 
 public class Testing {
     public static void main(String[] args) {
