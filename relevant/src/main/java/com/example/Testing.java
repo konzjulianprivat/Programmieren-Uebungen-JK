@@ -9,7 +9,7 @@ public class Testing {
     public static void main(String[] args) {
         //testSortingAlgorithmTimeMeasure(1000);
         //testMathOperation(5);
-        //Sudoku.printSpielfeld(Sudoku.generateSudoku());
+        Sudoku.printSpielfeld(Sudoku.generateSudoku());
         System.out.println(KlammernGueltig.checkForKlammernAdvanced("())"));
     }
     public static void testMathOperation(int j){
@@ -18,6 +18,8 @@ public class Testing {
         System.out.println("PrimeNumbers: " + MathOperation.primeNumbers(j));
         System.out.println("isPrimeNumber: " + MathOperation.isPrime(j));
         System.out.println("Collatz: " + MathOperation.collatz(j));
+        System.out.println("Faculty: " + MathOperation.faculty(j));
+        System.out.println("FacultyRecursive: " + MathOperation.facultyRecursive(j));
     }
     public static void testSortingAlgorithm(int j){
         ArrayList<Integer> test = SortingAlgorithm.createRandomArrayList(j);

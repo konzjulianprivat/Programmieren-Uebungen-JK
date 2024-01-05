@@ -80,4 +80,18 @@ public class MathOperation {
             return collatzRecursive(collArrayList, 3*input+1);
         }
     }
+    public static int faculty(int input){
+        int output=1;
+        for (int i = input; i >0; i--) {
+            output *= i;
+        }
+        return output;
+    }
+    public static int facultyRecursive(int input){
+        if(input==1){
+            return 1;
+        } else {
+            return input * facultyRecursive(input-1);
+        }
+    }
 }

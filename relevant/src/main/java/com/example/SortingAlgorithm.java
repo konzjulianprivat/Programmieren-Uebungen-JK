@@ -9,7 +9,7 @@ public class SortingAlgorithm {
         ArrayList<Integer> output = new ArrayList<>();
 
         for (int i = 0; i < length; i++) {
-            output.add(random.nextInt(100));
+            output.add(random.nextInt(10));
         }
         return output;
     }
